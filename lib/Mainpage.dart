@@ -22,7 +22,7 @@ class _MainpageState extends State<Mainpage> {
   void initState() {
     super.initState();
     FirebaseFirestore.instance
-        .collection("lawyers")
+        .collection("clients")
         .doc(clients!.uid)
         .get()
         .then(
