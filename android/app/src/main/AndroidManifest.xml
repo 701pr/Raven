@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pocketklawbook">
    <application
-        android:label="pocketklawbook"
+        android:label="Raven"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
