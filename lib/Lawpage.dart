@@ -18,19 +18,23 @@ class Lawpage extends StatefulWidget {
 class _LawpageState extends State<Lawpage> {
   late PageController _pageController;
 
-  int selectedIndex = 0;
-  User? user = FirebaseAuth.instance.currentUser;
+   User? lawyers = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
   @override
   void initState() {
     super.initState();
-    FirebaseFirestore.instance.collection("users").doc(user!.uid).get().then(
+    FirebaseFirestore.instance
+        .collection("lawyers")
+        .doc(lawyers!.uid)
+        .get()
+        .then(
       (value) {
         this.loggedInUser = UserModel.fromMap(value.data());
         _pageController = PageController(initialPage: 0);
       },
     );
   }
+      
 
   @override
   Widget build(BuildContext context) {
