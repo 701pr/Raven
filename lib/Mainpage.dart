@@ -16,10 +16,21 @@ class _MainpageState extends State<Mainpage> {
   late PageController _pageController;
   int selectedIndex = 0;
 
+  User? clients = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: selectedIndex);
+    FirebaseFirestore.instance
+        .collection("lawyers")
+        .doc(clients!.uid)
+        .get()
+        .then(
+      (value) {
+        this.loggedInUser = UserModel.fromMap(value.data());
+        _pageController = PageController(initialPage: 0);
+      },
+    );
   }
 
   @override
